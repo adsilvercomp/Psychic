@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>psychic</title>
+</head>
+<body>
+
+
+<!-- interface -->
+<div id="game">
+
+<p>click the screen to begin</p>
+	
+</div>
+
+
+
+
+
+
+
+	
+
+	<script>
+			
+		//global variables	
+		var compD;
+		var wins =0;
+		var losses =0;
+		var tries =13;
+		var incorrect= [];
+
+
+		//thins in this function will happen once per round.
+	 function compStart(){
+
+	 //create an array for the computer to randomly choose letters from.
+	var options = ["a", "b" ,"c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+			
+	//computer generates random letter
+		var computerSelect = options[Math.floor(Math.random()*options.length)];
+
+		console.log(computerSelect)
+		compD= computerSelect;
+
+
+	}
+
+
+ 
+	//things in this function will happen multiple times per round. 
+	 document.onkeyup=function userStart(){
+
+		
+
+			//user guess
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		console.log(compD);
+
+		console.log(userGuess); 
+
+						
+
+			//if the user guesses letter correctly, the user wins a point.
+			if(userGuess===compD){
+				win =+1;
+				compStart();
+				alert("you win");
+
+			}else{
+
+			//print wrong user guesses.	
+
+					 incorrect.push(userGuess);
+				}
+
+			//if the user does not guess correctly, a try is deducted.	
+				tries =-1; 
+
+			//if the user uses up all 13 tries, acquires a loss and the computer chooses a new letter
+			if(tries === 0){
+				losses =+1;
+				compStart();
+
+			}	
+
+		
+	
+
+
+}
+
+
+
+
+//this function starts the game by calling the other two functions.
+	window.onload = function gamePlay(){
+
+
+			//this is the user interface.
+		var html = "<p>Press a letter to make a guess</p>" + 
+		"<p>wins:" + wins + "</p>" + 
+		"<p>losses:" + losses + "</p>" +
+		"<p>guesses:" - tries + "</p>"+
+		"<p>Your guesses so far:" + incorrect + "</p>";
+
+		console.log(html);
+
+		document.getElementById('game').innerHTML=html;
+			
+
+			compStart();
+	
+
+	}
+
+
+
+	
+		
+
+
+
+	
+	</script>
+	</body>
+
+</html>
