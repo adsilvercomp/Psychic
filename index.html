@@ -30,6 +30,12 @@
 		var tries =13;
 		var incorrect= [];
 		var resetTries=13;
+		var resetIncorrect=[];
+
+
+		
+	
+		
 		
 
 
@@ -54,7 +60,7 @@
 	//things in this function will happen multiple times per round. 
 	 document.onkeyup=function userStart(){
 
-		
+	
 
 			//user guess
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
@@ -62,6 +68,7 @@
 		console.log(compD);
 
 		console.log(userGuess); 
+
 
 
 			if(userGuess!==compD){
@@ -89,22 +96,34 @@
 
 
 
-
 			//if the user uses up all 13 tries, acquires a loss and the computer chooses a new letter
 			if(tries <1 ){
 				losses ++;
 				gamePlay();
 				compStart();
 				tries=resetTries;
+				incorrect=[];
 
-				
 
-			}	
+			}
+
+			if(losses===10){
+
+				var GameOver = "<h1>Game Over</h1>"
+
+				document.getElementById('game').innerHTML= GameOver;
+			}
+
+			if(wins===10){
+
+				var Congrats = "<h1>Congrats, you are a winner!</h1>"
+
+				document.getElementById('game').innerHTML= Congrats;
+			}
 
 
 
 }
-
 
 
 
