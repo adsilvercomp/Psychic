@@ -29,6 +29,8 @@
 		var losses =0;
 		var tries =13;
 		var incorrect= [];
+		var resetTries=13;
+		
 
 
 		//thins in this function will happen once per round.
@@ -61,35 +63,44 @@
 
 		console.log(userGuess); 
 
-						
 
-			//if the user guesses letter correctly, the user wins a point.
+			if(userGuess!==compD){
+
+			gamePlay();
+
+			//print wrong user guesses.	
+
+			incorrect.push(userGuess);
+				
+
+			//if the user does not guess correctly, a try is deducted.	
+				tries --; 
+
+			}
+
 			if(userGuess===compD){
-				wins =+1;
+				wins ++;
 				compStart();
 				alert("you win");
 				gamePlay();
 
-			}else{
 
-			//print wrong user guesses.	
+			}				
 
-					 incorrect.push(userGuess);
-				}
 
-			//if the user does not guess correctly, a try is deducted.	
-				tries =-1; 
+
 
 			//if the user uses up all 13 tries, acquires a loss and the computer chooses a new letter
-			if(tries === 0){
-				losses =+1;
-				compStart();
+			if(tries <1 ){
+				losses ++;
 				gamePlay();
+				compStart();
+				tries=resetTries;
+
+				
 
 			}	
 
-		
-	
 
 
 }
@@ -113,13 +124,14 @@
 		document.getElementById('game').innerHTML=html;
 			
 
-			compStart();
+			
 	
 
 	}
 
 	window.onload= function(){
 		gamePlay();
+		compStart();
 	}
 
 
