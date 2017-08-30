@@ -9,14 +9,9 @@
 <!-- interface -->
 <div id="game">
 
-<p>click the screen to begin</p>
+
 	
 </div>
-
-
-
-
-
 
 
 	
@@ -34,12 +29,10 @@
 
 
 		
-	
-		
 		
 
 
-		//thins in this function will happen once per round.
+		//things in this function will happen once per round.
 	 function compStart(){
 
 	 //create an array for the computer to randomly choose letters from.
@@ -65,10 +58,8 @@
 			//user guess
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-		console.log(compD);
 
 		console.log(userGuess); 
-
 
 
 			if(userGuess!==compD){
@@ -80,11 +71,12 @@
 			incorrect.push(userGuess);
 				
 
-			//if the user does not guess correctly, a try is deducted.	
+			//if the user does not guess correctly, a guess is deducted.	
 				tries --; 
 
 			}
 
+			//if user guess = the letter selected by computer the user gets a win and their guesses reset to 13.
 			if(userGuess===compD){
 				wins ++;
 				compStart();
@@ -97,7 +89,7 @@
 
 
 
-			//if the user uses up all 13 tries, acquires a loss and the computer chooses a new letter
+			//if the user uses up all 13 tries, the  user acquires a loss, their guesses reset. A loss and the computer chooses a new letter
 			if(tries <1 ){
 				losses ++;
 				gamePlay();
@@ -133,7 +125,7 @@
 
 
 			//this is the user interface.
-		var html = "<p>Press a letter to make a guess</p>" + 
+		var html = "<p> Guess which letter the computer has selected.</p>" + 
 		"<p>wins:" + wins + "</p>" + 
 		"<p>losses:" + losses + "</p>" +
 		"<p>guesses:" + tries + "</p>"+
@@ -149,15 +141,13 @@
 
 	}
 
+ // this onload function starts the program by calling the compstart function as well as the function controlling the user interface.
+
 	window.onload= function(){
 		gamePlay();
 		compStart();
 	}
 
-
-
-	
-		
 
 
 
