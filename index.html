@@ -65,9 +65,10 @@
 
 			//if the user guesses letter correctly, the user wins a point.
 			if(userGuess===compD){
-				win =+1;
+				wins =+1;
 				compStart();
 				alert("you win");
+				gamePlay();
 
 			}else{
 
@@ -83,6 +84,7 @@
 			if(tries === 0){
 				losses =+1;
 				compStart();
+				gamePlay();
 
 			}	
 
@@ -96,14 +98,14 @@
 
 
 //this function starts the game by calling the other two functions.
-	window.onload = function gamePlay(){
+	  function gamePlay(){
 
 
 			//this is the user interface.
 		var html = "<p>Press a letter to make a guess</p>" + 
 		"<p>wins:" + wins + "</p>" + 
 		"<p>losses:" + losses + "</p>" +
-		"<p>guesses:" - tries + "</p>"+
+		"<p>guesses:" + tries + "</p>"+
 		"<p>Your guesses so far:" + incorrect + "</p>";
 
 		console.log(html);
@@ -114,6 +116,10 @@
 			compStart();
 	
 
+	}
+
+	window.onload= function(){
+		gamePlay();
 	}
 
 
